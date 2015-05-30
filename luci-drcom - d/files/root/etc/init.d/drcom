@@ -1,0 +1,49 @@
+#!/bin/sh /etc/rc.common
+START=90
+
+drcom_up() {
+	config_get_bool enable config enable
+	if [ $enable ]; then
+		config_get server config server
+		config_get username config username
+		config_get password config password
+		config_get mac config mac
+		config_get CONTROLCHECKSTATUS config CONTROLCHECKSTATUS
+		config_get ADAPTERNUM config ADAPTERNUM
+		config_get host_ip config host_ip
+		config_get IPDOG config IPDOG
+		config_get host_name config host_name
+		config_get PRIMARY_DNS config PRIMARY_DNS
+		config_get dhcp_server config dhcp_server
+		config_get AUTH_VERSION config AUTH_VERSION
+		config_get host_os config host_os
+		config_get KEEP_ALIVE_VERSION config KEEP_ALIVE_VERSION
+		echo -e "server='$server'" > $conf
+		echo -e "username='$username'" >> $conf
+		echo -e "password='$password'" >> $conf
+		echo -e "mac=$mac" >> $conf
+		echo -e "CONTROLCHECKSTATUS='$CONTROLCHECKSTATUS'" >> $conf
+		echo -e "ADAPTERNUM='$ADAPTERNUM'" >> $conf
+		echo -e "host_ip='$host_ip'" >> $conf
+		echo -e "IPDOG='$IPDOG'" >> $conf
+		echo -e "host_name='$host_name'" >> $conf
+		echo -e "PRIMARY_DNS='$PRIMARY_DNS'" >> $conf
+		echo -e "dhcp_server='$dhcp_server'" >> $conf
+		echo -e "AUTH_VERSION='$AUTH_VERSION'" >> $conf
+		echo -e "host_os='$host_os'" >> $conf
+		echo -e "KEEP_ALIVE_VERSION='$KEEP_ALIVE_VERSION'" >> $conf
+	fi
+	echo "Drcom has started."
+}
+
+start() {
+	conf="/etc/drcom.conf"
+	config_load drcom
+	drcom_up
+	/usr/bin/drcom&
+}
+
+stop() {
+	killall python
+	echo "Drcom has been shutdown."
+}

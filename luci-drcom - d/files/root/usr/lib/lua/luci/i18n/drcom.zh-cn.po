@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "drcom is running"
+msgstr "drcom 运行中"
+
+msgid "drcom is not running"
+msgstr "drcom 未运行"
+
+msgid "drcom config"
+msgstr "drcom 配置"
+
+msgid "Basic Settings"
+msgstr "基本设置"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Server IP"
+msgstr "认证服务器 IP"
+
+msgid "Username"
+msgstr "用户账号"
+
+msgid "Password"
+msgstr "用户密码"
+
+msgid "MAC Address"
+msgstr "MAC 地址"
+
+msgid "Host IP"
+msgstr "用户主机 IP"
+
+msgid "Host_name"
+msgstr "用户主机名称"
+
+msgid "PRIMARY_DNS"
+msgstr "主DNS IP"
+
+msgid "Dhcp_server"
+msgstr "DHCP服务器 IP"
+
+msgid "AUTH_VERSION"
+msgstr "认证版本号"
+
+msgid "Host_os"
+msgstr "用户主机系统"
+
+msgid "KEEP_ALIVE_VERSION"
+msgstr "keep-alive 版本"
+
+msgid "Auto Config"
+msgstr "自动配置"
+
+msgid "Please rename the file to 'dr.pcapng' before upload, file size limit at 1M."
+msgstr "请在上传文件前先把文件重命名为 'dr.pcapng'，文件大小限制为1M。"
+
+msgid "Upload file"
+msgstr "上传文件"
+
+msgid "Create upload file error."
+msgstr "创建上传文件错误。"
+
+msgid "File saved to"
+msgstr "文件已保存到"
+
+msgid "No specify upload file."
+msgstr "没有选定上传文件。"
+
+msgid "After upload the file, you can generate the config file."
+msgstr "上传文件完毕后，你可以点击生成配置来生成配置文件。"
+
+msgid "Generate config"
+msgstr "生成配置"

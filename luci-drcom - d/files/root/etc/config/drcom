@@ -1,0 +1,8 @@
+
+config drcom 'config'
+	option server '1.1.1.1'
+	option username 'fuyumi'
+	option password 'fuyumi'
+	option mac '0xf0795907d0c8'
+	option enable '0'
+
