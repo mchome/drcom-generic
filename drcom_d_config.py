@@ -1,4 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 from binascii import hexlify
 import re
 
@@ -9,8 +11,8 @@ def hexed(s):
     return ret
 
 filename = 'dr.pcapng'
-f = open(filename, 'rb')
-text = f.read()
+with open(filename, 'rb') as f:
+	text = f.read()
 offset = re.search('\xf0\x00\xf0\x00[\x00-\xFF]{4}\x03\x01', text).start() + 8
 #print hexlify(text[offset:offset+330])
 username_len = ord(text[offset+3]) - 20
@@ -30,7 +32,7 @@ dhcp_server = 'dhcp_server = \'%s\'' % '.'.join(map(lambda x: str(ord(x)), text[
 AUTH_VERSION = 'AUTH_VERSION = \'%s\'' % hexed(text[offset+310:offset+312])
 mac = 'mac = 0x%s' % hexlify(text[offset+320:offset+326])
 host_os = 'host_os = \'%s\'' % 'WINDIAOS'
-KEEP_ALIVE_VERSION = re.search('\xf0\x00\xf0\x00....\x07.\x5c\x28\x00\x0b\x01(..)', text).group(1)
+KEEP_ALIVE_VERSION = [i for i in re.findall('\xf0\x00\xf0\x00....\x07.\x5c\x28\x00\x0b\x01(..)', text) if i != '\x0f\x27'][0]
 KEEP_ALIVE_VERSION = 'KEEP_ALIVE_VERSION = \'%s\'' % hexed(KEEP_ALIVE_VERSION)
 
 content = open('config.conf', 'w')
