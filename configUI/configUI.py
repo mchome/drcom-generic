@@ -47,13 +47,13 @@ class Window(QtGui.QMainWindow):
 				'')
 		if method == 'd':
 			r = config.config_d(fpath)
-			with open('config.conf', 'rb') as f:
+			with open('drcom.conf', 'rb') as f:
 				text = f.read()
 				self.textEdit.setText(text)
 			self.setStatusTip(r)
 		elif method == 'p':
 			r = config.config_p(fpath)
-			with open('config.conf', 'rb') as f:
+			with open('drcom.conf', 'rb') as f:
 				text = f.read()
 				self.textEdit.setText(text)
 			self.setStatusTip(r)

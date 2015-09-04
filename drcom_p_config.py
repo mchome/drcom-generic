@@ -19,7 +19,7 @@ pppoe_flag = 'pppoe_flag = \'%s\'' % hexed(text[offset+19])
 keep_alive2_flag = re.search('\x07.\x5c\x28\x00\x0b\x03(.)\x02', text).group(1)
 keep_alive2_flag = 'keep_alive2_flag = \'%s\'' % hexed(keep_alive2_flag)
 
-content = open('config.conf', 'w')
+content = open('drcom.conf', 'w')
 for args in [server,pppoe_flag,keep_alive2_flag]:
     print args
     content.write(args+'\n')

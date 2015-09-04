@@ -26,13 +26,13 @@ CONTROLCHECKSTATUS = '%s' % hexed(text[offset+56])
 ADAPTERNUM = '%s' % hexed(text[offset+57])
 host_ip = '%s' % '.'.join(map(lambda x: str(ord(x)), text[offset+81:offset+85]))
 IPDOG = '%s' % hexed(text[offset+105])
-host_name = '%s' % 'DRCOMFUCKER'
+host_name = '%s' % 'fuyumi'
 PRIMARY_DNS = '%s' % '.'.join(map(lambda x: str(ord(x)), text[offset+142 :offset+146]))
 dhcp_server = '%s' % '.'.join(map(lambda x: str(ord(x)), text[offset+146:offset+150]))
 AUTH_VERSION = '%s' % hexed(text[offset+310:offset+312])
 mac = '0x%s' % hexlify(text[offset+320:offset+326])
-host_os = '%s' % 'WINDIAOS'
-KEEP_ALIVE_VERSION = re.search('\xf0\x00\xf0\x00....\x07.\x5c\x28\x00\x0b\x01(..)', text).group(1)
+host_os = '%s' % 'Windows 8.1'
+KEEP_ALIVE_VERSION = [i for i in re.findall('\xf0\x00\xf0\x00....\x07.\x5c\x28\x00\x0b\x01(..)', text) if i != '\x0f\x27'][0]
 KEEP_ALIVE_VERSION = '%s' % hexed(KEEP_ALIVE_VERSION)
 
 subprocess.check_output(["uci", "set", "drcom.config.server="+server])
