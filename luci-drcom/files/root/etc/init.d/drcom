@@ -40,10 +40,10 @@ start() {
 	conf="/etc/drcom.conf"
 	config_load drcom
 	drcom_up
-	/usr/bin/drcom&
+	/usr/bin/drcom
 }
 
 stop() {
-	killall python
+	killall -9 python
 	echo "Drcom has been shutdown."
 }
