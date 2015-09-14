@@ -58,7 +58,7 @@ nixio.fs.mkdir(dir)
 luci.http.setfilehandler(
 	function(meta, chunk, eof)
 		if not upload then
-			if not meta then return end
+			if not meta.file then return end
 			upload = nixio.open(dir .. meta.file, "w")
 			if not upload then
 				submit.value = translate("Create upload file error.")

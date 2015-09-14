@@ -22,16 +22,16 @@ drcom_up() {
 		echo -e "username='$username'" >> $conf
 		echo -e "password='$password'" >> $conf
 		echo -e "mac=$mac" >> $conf
-		echo -e "CONTROLCHECKSTATUS='$CONTROLCHECKSTATUS'" >> $conf
-		echo -e "ADAPTERNUM='$ADAPTERNUM'" >> $conf
+		echo "CONTROLCHECKSTATUS='$CONTROLCHECKSTATUS'" >> $conf
+		echo "ADAPTERNUM='$ADAPTERNUM'" >> $conf
 		echo -e "host_ip='$host_ip'" >> $conf
-		echo -e "IPDOG='$IPDOG'" >> $conf
+		echo "IPDOG='$IPDOG'" >> $conf
 		echo -e "host_name='$host_name'" >> $conf
 		echo -e "PRIMARY_DNS='$PRIMARY_DNS'" >> $conf
 		echo -e "dhcp_server='$dhcp_server'" >> $conf
-		echo -e "AUTH_VERSION='$AUTH_VERSION'" >> $conf
+		echo "AUTH_VERSION='$AUTH_VERSION'" >> $conf
 		echo -e "host_os='$host_os'" >> $conf
-		echo -e "KEEP_ALIVE_VERSION='$KEEP_ALIVE_VERSION'" >> $conf
+		echo "KEEP_ALIVE_VERSION='$KEEP_ALIVE_VERSION'" >> $conf
 	fi
 	echo "Drcom has started."
 }

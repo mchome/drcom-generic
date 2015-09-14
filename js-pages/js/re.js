@@ -25,7 +25,11 @@ $(document).ready(function (){
 	$('#config-generate').click(function(){
 		var gen = '';
 		for (var i = 0; i < params[0].length; i++) {
-			gen += (params[0][i] + ' = \'' + params[1][i] + '\'\n');
+			if (params[0][i] == 'mac'){
+				gen += (params[0][i] + ' = ' + params[1][i] + '\n');
+			} else {
+				gen += (params[0][i] + ' = \'' + params[1][i] + '\'\n');
+			}
 		};
 		gen = gen.slice(0, -1);
 		var blob = new Blob([gen], {type: "text/plain;charset=utf-8"});
@@ -107,7 +111,7 @@ function re_d (text) {
 	// var KEEP_ALIVE_VERSION = r2[1];
 	for (var i = r2.length - 1; i >= 0; i--) {
 		if(r2[i].slice(-4)!='0f27')
-			var KEEP_ALIVE_VERSION = r2[i].slice(-4);
+			var KEEP_ALIVE_VERSION = r2[i].slice(-4).replace(/../ig, function (s,t) {return '\\x' + s});
 	};
 	var params1 = ['server','username','password','CONTROLCHECKSTATUS','ADAPTERNUM','host_ip','IPDOG','host_name','PRIMARY_DNS','dhcp_server','AUTH_VERSION','mac','host_os','KEEP_ALIVE_VERSION']
 	var params2 = [server,username,password,CONTROLCHECKSTATUS,ADAPTERNUM,host_ip,IPDOG,host_name,PRIMARY_DNS,dhcp_server,AUTH_VERSION,mac,host_os,KEEP_ALIVE_VERSION]
