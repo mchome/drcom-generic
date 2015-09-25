@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-drcom
-PKG_VERSION:=1.0.1
+PKG_VERSION:=1.0.2
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -37,7 +37,7 @@ if [ -z "$${IPKG_INSTROOT}" ]; then
 	chmod 755 /etc/init.d/drcom >/dev/null 2>&1
 	chmod 755 /usr/share/drcom_d_config.py >/dev/null 2>&1
 	chmod 755 /usr/bin/drcom >/dev/null 2>&1
-	/etc/init.d/drcom enable >/dev/null 2>&1
+	chmod 755 /etc/hotplug.d/iface/90-drcom >/dev/null 2>&1
 	rm -f /tmp/luci-indexcache
 fi
 exit 0
@@ -46,6 +46,7 @@ endef
 define Package/luci-drcom/install
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/etc/hotplug.d/iface
 	$(INSTALL_DIR) $(1)/usr/share
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
@@ -57,6 +58,7 @@ define Package/luci-drcom/install
 	$(INSTALL_CONF) ./files/root/etc/config/drcom $(1)/etc/config/drcom
 	$(INSTALL_BIN) ./files/root/etc/uci-defaults/luci-drcom $(1)/etc/uci-defaults/luci-drcom
 	$(INSTALL_BIN) ./files/root/etc/init.d/drcom $(1)/etc/init.d/drcom
+	$(INSTALL_BIN) ./files/root/etc/hotplug.d/iface/90-drcom $(1)/etc/hotplug.d/iface/90-drcom
 	$(INSTALL_BIN) ./files/root/usr/share/drcom_d_config.py $(1)/usr/share/drcom_d_config.py
 	$(INSTALL_BIN) ./files/root/usr/bin/drcom $(1)/usr/bin/drcom
 	$(INSTALL_DATA) ./files/root/usr/lib/lua/luci/i18n/drcom.zh-cn.lmo $(1)/usr/lib/lua/luci/i18n/drcom.zh-cn.lmo

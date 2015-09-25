@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$ACTION" = ifup ]; then 
+	if [ "${INTERFACE}" = "wan" ]; then
+		/etc/inin.d/drcom stop
+		sleep 2
+		/etc/init.d/drcom start
+	fi
+fi
