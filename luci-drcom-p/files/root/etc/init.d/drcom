@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+START=90
+
+drcom_up() {
+	config_get_bool enable config enable
+	if [ $enable ]; then
+		config_get server config server
+		config_get pppoe_flag config pppoe_flag
+		config_get keep_alive2_flag config keep_alive2_flag
+		echo -e "server='$server'" > $conf
+		echo "pppoe_flag='$pppoe_flag'" >> $conf
+		echo "keep_alive2_flag='$keep_alive2_flag'" >> $conf
+	fi
+	echo "Drcom has started."
+}
+
+start() {
+	conf="/etc/drcom.conf"
+	config_load drcom
+	drcom_up
+	/usr/bin/drcom &
+}
+
+stop() {
+	killall -9 python
+	echo "Drcom has been shutdown."
+}

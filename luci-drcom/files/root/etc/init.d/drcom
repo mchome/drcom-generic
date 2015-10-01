@@ -40,7 +40,7 @@ start() {
 	conf="/etc/drcom.conf"
 	config_load drcom
 	drcom_up
-	/usr/bin/drcom
+	/usr/bin/drcom &
 }
 
 stop() {

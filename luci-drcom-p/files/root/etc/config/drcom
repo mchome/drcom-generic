@@ -1,0 +1,5 @@
+
+config drcom 'config'
+	option server '1.1.1.1'
+	option enable '0'
+
