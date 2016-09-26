@@ -62,7 +62,7 @@ s.bind((bind_ip, 61440))
 
 s.settimeout(3)
 SALT = ''
-IS_TEST = True
+IS_TEST = False
 # specified fields based on version
 CONF = "/etc/drcom.conf"
 UNLIMITED_RETRY = True
@@ -71,7 +71,7 @@ DEBUG = False #log saves to file
 LOG_PATH = '/var/log/drcom_client.log'
 if IS_TEST:
     DEBUG = True
-    LOG_PATH = 'drcom_client.log'
+    LOG_PATH = '/tmp/drcom_client.log'
 
 
 def log(*args, **kwargs):
