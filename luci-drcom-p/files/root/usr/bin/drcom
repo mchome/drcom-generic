@@ -44,12 +44,13 @@ def dump(n):
 
 def gbk2utf8(string):
     try:
+        import platform
         if platform.uname()[0] != 'Windows':
             return string.decode('gb2312').encode().decode()
         else:
             return string.decode('gb2312')
-    except Exception, e:
-        return 'error for decoding'
+    except Exception as e:
+        return 'You have witnessed too much...'
 
 class Socket:
     def __init__(self, server, port=61440):
